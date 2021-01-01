@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <gtest/gtest.h>
 #include <iostream>
 #include <vector>
 
@@ -17,10 +18,10 @@ class inst {
     vector<stage> stages;
     inst() { stages.resize(5); }
 };
-class pipe {
+class pipe_sim {
 
   public:
-    pipe() {
+    pipe_sim() {
         regs.resize(4);
         pipes.resize(5);
     }
@@ -58,8 +59,9 @@ class pipe {
     vector<uint32_t> pipes;
 };
 
-int main() {
-    pipe p;
+TEST(pipeline, simple) {
+    EXPECT_TRUE(true);
+    pipe_sim p;
     {
         inst i;
         p.run(i);
@@ -74,5 +76,4 @@ int main() {
         i.stages.at(1).in.push_back(3);
         p.run(i);
     }
-    return 0;
 }
